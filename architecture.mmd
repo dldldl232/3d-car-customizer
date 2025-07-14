@@ -1,0 +1,18 @@
+C4Component
+    Container(api, "FastAPI Backend", "Python/FastAPI", "Handles business logic, authentication, API endpoints")
+    Component(router, "Routers", "FastAPI Routers", "Define API endpoints for users, items, cars, payments, etc.")
+    Component(service, "Services", "Business Logic Layer", "Implements core workflows, validation, and orchestration")
+    Component(model, "Models", "SQLModel/SQLAlchemy Models", "ORM models for database tables")
+    Component(db, "Database", "Azure SQL Database", "Stores persistent data")
+    Component(auth, "Authentication", "JWT/OAuth2", "Handles user authentication and authorization")
+    Component(config, "Config", "Settings/Config", "Environment variables, secrets, and settings")
+    Component(test, "Tests", "Pytest", "Automated tests for API and business logic")
+
+    Rel(api, router, "Uses")
+    Rel(router, service, "Calls")
+    Rel(service, model, "Uses")
+    Rel(model, db, "Persists to")
+    Rel(router, auth, "Uses for protected endpoints")
+    Rel(api, config, "Loads settings from")
+    Rel(test, api, "Tests via HTTP/ASGI")
+    
