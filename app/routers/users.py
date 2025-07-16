@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlmodel import Session
 from app.db import get_session, get_user
 from app.models import User
-from app.auth import get_password_hash
+from app.auth import get_password_hash, get_current_user
 from pydantic import BaseModel
 
 router = APIRouter()
@@ -22,3 +22,10 @@ def register(user: UserCreate, session:Session=Depends(get_session)):
     return {"username": user_obj.username, "id": user_obj.id}
     # why do we return this?
     # also why do we need to refresh?
+
+@router.get("/user_profile", response_model=dict)
+def read_users_me(current_user: User = Depends(get_current_user)):
+    return {
+        "id": current_user.id,
+        "username": current_user.username,
+    }
