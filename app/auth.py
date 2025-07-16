@@ -57,14 +57,14 @@ def get_current_user(
     payload = decode_access_token(token)
     if not payload or "sub" not in payload:
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED
+            status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid authentication credentials",
         )
     username = payload["sub"] # question what sub is
     user = get_user(username, session)
     if not user:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND
+            status_code=status.HTTP_404_NOT_FOUND,
             detail="User not found",
         )
     return user
