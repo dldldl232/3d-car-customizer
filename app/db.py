@@ -1,4 +1,7 @@
 from sqlmodel import SQLModel, create_engine, Session
+from app.models import User # this assumes we have a User model, ask gpt 
+from sqlmodel import Session, select
+
 
 # currently using a local file
 DATABASE_URL = "sqlite:///./test.db"
@@ -15,3 +18,9 @@ def get_session():
     with Session(engine) as session:
         yield session
 
+def get_user(username: str, session: Session):
+    # session is a instance of Session from SQLModel used to execute the query
+    statement = select(User).where(User.username == username)
+    result = session.exec(statement)
+    return result.first() # returns the first matching user, as username are unique
+    
