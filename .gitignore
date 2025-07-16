@@ -8,3 +8,6 @@ __pycache__/
 # OS junk
 *.pyc
 .DS_Store
+
+# Database
+test.db
