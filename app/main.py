@@ -1,17 +1,28 @@
-from fastapi import FastAPI, Depends, status
+from fastapi import FastAPI, Depends, status, HTTPException
 from sqlmodel import Session
 from app.db import init_db, get_session, get_user
 from app.models import Item
-from app.routers import items, protected, users
+from app.routers import items, protected, users, carmodels, parts
 from fastapi.security import  OAuth2PasswordRequestForm
 from app.auth import verify_password, create_access_token, oauth2_scheme
 from app.config import get_settings
 from datetime import timedelta
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Simple Backend API", version = "0.1.0")
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # or ["*"] for all origins (dev only)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 app.include_router(protected.router)
 app.include_router(users.router)
+app.include_router(carmodels.router)
+app.include_router(parts.router)
 
 @app.post("/token")
 async def login(
