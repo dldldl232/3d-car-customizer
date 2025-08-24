@@ -11,3 +11,13 @@ __pycache__/
 
 # Database
 test.db
+
+# Downloaded 3D models and large files
+backend/downloads/
+*.glb
+*.gltf
+*.obj
+*.fbx
+*.zip
+*.rar
+*.7z
