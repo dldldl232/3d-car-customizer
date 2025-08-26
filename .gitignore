@@ -12,6 +12,10 @@ __pycache__/
 # Database
 test.db
 
+# Environment variables
+.env
+backend/.env
+
 # Downloaded 3D models and large files
 backend/downloads/
 *.glb

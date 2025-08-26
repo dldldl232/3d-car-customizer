@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     secret_key: str
     allowed_origins: List[str] = ["http://localhost:3000"]
     access_token_expire_minutes: int = 30
-    sketchfab_api_token: str = "cda1c4c6ac7b4371b586beed96687b90"
+    sketchfab_api_token: str = ""
 
     class Config:
         env_file = ".env"
