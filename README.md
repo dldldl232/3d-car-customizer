@@ -219,9 +219,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-Your Name - [your.email@example.com](mailto:your.email@example.com)
+Seoyeon Kim - [seoyeonkim0404@gmail.com]
 
-Project Link: [https://github.com/yourusername/3d-car-customizer](https://github.com/yourusername/3d-car-customizer)
+Project Link: [https://github.com/yourusername/3d-car-customizer](https://github.com/dldldl232/3d-car-customizer)
 
 ---
 
